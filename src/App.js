@@ -1,69 +1,61 @@
-import './App.css';
-import cats from './mockCats.js'
-import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch
-} from 'react-router-dom'
+import "./App.css";
+import cats from "./mockCats.js";
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Footer from './components/Footer' 
-import Header from './components/Header' 
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 
-import CatEdit from './pages/CatEdit'
-import CatIndex from './pages/CatIndex'
-import CatNew from './pages/CatNew'
-import CatShow from './pages/CatShow'
-import Home from './pages/Home'
-import NotFound from './pages/NotFound'
-
+import CatEdit from "./pages/CatEdit";
+import CatIndex from "./pages/CatIndex";
+import CatNew from "./pages/CatNew";
+import CatShow from "./pages/CatShow";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 
 class App extends Component {
   constructor(props) {
-    super(props)
-    this.state = {
-      cats: cats
-    }
+    super(props);
+    this.state = { 
+      cats: cats,
+    };
   }
-
-  createCat = (newlyCreatedCat) => {
-    console.log(newlyCreatedCat)
-}
-
+  createCat = (newlyCreatedCat) => {};
 
   render() {
     return (
       <Router>
-        <Header/>  
-          <Switch>
-            <Route exact path="/" component={Home}/> 
-            <Route path="/catindex" 
-                  render={(props) => <CatIndex cats={this.state.cats} />} 
-            />  
-            <Route
-               path="/catshow/:id" 
-              render={(props) => {
-
-              let id = +props.match.params.id
-              let cat = this.state.cats.find(catObject => catObject.id === id)
-              return <CatShow cat={cat}/>
-              }}
-            />  
-            <Route path="/catedit" component={CatEdit}/>
-
-            <Route 
-            path="/catnew" 
-            render={()=>{
-              return <CatNew createCat={this.createCat}/> 
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route
+            path="/catindex"
+            render={(props) => <CatIndex cats={this.state.cats} />}
+          />
+          <Route
+            path="/catshow/:id"
+            render={(props) => {
+              let id = +props.match.params.id;
+              let cat = this.state.cats.find(
+                (catObject) => catObject.id === id
+              );
+              return <CatShow cat={cat} />;
             }}
-            />  
-            <Route component={NotFound}/>  
+          />
+          <Route path="/catedit" component={CatEdit} />
+
+          <Route
+            path="/catnew"
+            render={() => {
+              return <CatNew createCat={this.createCat} />;
+            }}
+          />
+          <Route component={NotFound} />
         </Switch>
-        <Footer/>  
+        <Footer />
       </Router>
-    )
+    );
   }
 }
 
 export default App;
-
