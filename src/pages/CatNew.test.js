@@ -19,7 +19,7 @@ describe("When CatNew renders", () => {
       expect(formGroup.length).toEqual(4)
       const formLabel = catNew.find("Label")
       expect(formLabel.length).toEqual(4)
-      const input = catNew.find("Input")
+      const input = catNew.find('Input')
       expect(input.length).toEqual(4)
     })
   })
