@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
+import {NavLink} from 'react-router-dom';
 
-class Index extends Component {
+class CatIndex extends Component {
     render() {
         return (
             <>
-              <h2>Index</h2>  
+              <h2>Cat Index</h2>
+              {this.props.cats && this.props.cats.map(cat =>{
+                  return <NavLink to={`/catshow/${cat.id}`} key={cat.id}> <br></br>{cat.name}</NavLink>
+              })}  
             </>
         );
     }
 }
 
-export default Index;
+export default CatIndex;

@@ -7,7 +7,7 @@ import CatIndex from './CatIndex'
 Enzyme.configure({adapter: new Adapter()})
 
 describe("When CatIndex renders ", () => {
-  it("displays a Header and Footer", () => {
+  it("displays a heading", () => {
     
     const catIndex= shallow(<CatIndex/>)
    const catIndexHeadingText = catIndex.find("h2").text()
